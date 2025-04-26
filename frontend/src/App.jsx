@@ -1,4 +1,3 @@
-import React from 'react';
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from './pages/Home';
@@ -7,6 +6,8 @@ import SingleBlog from './pages/SingleBlog';
 import SignUp from './pages/SignUp';
 import Login from './pages/Loign';
 import UploadBlog from './pages/UploadBlog';
+
+import AboutSection from "./pages/AboutSection";
 
 const App = () => {
   let isLoggedIn = localStorage.getItem("isLoggedIn");
@@ -17,6 +18,7 @@ const App = () => {
           <Route path='/' element={isLoggedIn ? <Home /> : <Navigate to={"/login"}/>} />
           <Route path='/signUp' element={<SignUp />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/about' element={<AboutSection/>} />
           <Route path='/blog/:blogId' element={isLoggedIn ? <SingleBlog /> : <Navigate to={"/login"}/>} />
           <Route path='/uploadBlog' element={isLoggedIn ? <UploadBlog /> : <Navigate to={"/login"}/>} />
           <Route path="*" element={<NoPage />} />
